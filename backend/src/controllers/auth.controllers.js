@@ -49,7 +49,7 @@ const signUp = async (req, res) => {
 };
 
 // login controller
-const login = async (req, res) => {
+const logIn = async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
@@ -84,7 +84,7 @@ const login = async (req, res) => {
       success: true,
       message: "User logged in successfully",
       data : {
-        token : token
+        token :token
       }
     });
 
@@ -99,4 +99,6 @@ const login = async (req, res) => {
 }
 
 
-module.exports = { signUp };
+
+
+module.exports = { signUp, logIn };
