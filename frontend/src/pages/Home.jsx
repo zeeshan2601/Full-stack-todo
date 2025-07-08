@@ -1,9 +1,23 @@
-import React from 'react'
+import React from "react";
+import { useForm } from "react-hook-form";
+import AddTodos from "../components/AddTodos";
+import Todo from "../components/todo";
+import axios from "axios";
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  const fakeData = {
+    title: "Todo 1",
+    description: "Description 1"
+  }
 
-export default Home
+  const onSubmit = (data) => console.log(data)
+
+  return(
+    <div>
+      <AddTodos />
+      <Todo props={fakeData} />
+    </div>
+  )
+};
+
+export default Home;

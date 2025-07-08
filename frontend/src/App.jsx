@@ -6,11 +6,13 @@ import { Outlet } from "react-router-dom"
 function App() {
  
   return (
-    <>
-      <Navbar/>
-        <Outlet/>
-      <Footer/>      
-    </>
+    <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900">
+      <Navbar />
+      <div className="flex-1 ">
+        <Outlet />
+      </div>
+      <Footer />
+    </div>
   )
 }
 
