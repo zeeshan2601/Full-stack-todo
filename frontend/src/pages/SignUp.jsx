@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { signUp } from "../services/authService.js";
 
 const SignUp = () => {
   const {
@@ -8,7 +9,22 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await signUp(data);
+
+      console.log('Signup successful:', response);
+      if(response.success){
+        navigate('/login');
+      }
+    } catch (error) {
+      console.error('Signup failed:', error);
+    }
+  }
+
   return (
     <div className="flex justify-center items-center min-h-[70vh] bg-gray-100 dark:bg-gray-900">
       <form

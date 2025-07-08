@@ -1,9 +1,12 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 const LogIn = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => console.log(data);
+
+
 
   return (
       <div className="flex justify-center items-center min-h-[70vh] bg-gray-100 dark:bg-gray-900">
@@ -37,6 +40,11 @@ const LogIn = () => {
         >
           Log In
         </button>
+        <div>
+          <p className='text-white'>Don't have an account?{" "} <Link to="/signup">
+            <span className="px-2 text-blue-500 hover:text-blue-600">Sign Up</span>
+          </Link></p>
+        </div>
       </form>
     </div>
   )
