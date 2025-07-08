@@ -8,18 +8,18 @@ const connectDB = require('./config/db.congig');
 //config
 connectDB();
 
-
 // Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Routes
-app.get('/', (req, res) => {
-    res.json('Hello World');
-});
+// importing routes
+const authRoutes = require('./routes/auth.routes.js');
 
+
+// Routes
+app.use('/api/auth', authRoutes);
 
 
 
