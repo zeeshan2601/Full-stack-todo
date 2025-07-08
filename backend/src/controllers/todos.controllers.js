@@ -28,6 +28,16 @@ const getTodos = async (req, res) => {
     });
 }
 
+const updateTodo = async (req, res) => {
+    const { id } = req.params;
+    const { title, description } = req.body;
+    const updatedTodo = await Todo.findByIdAndUpdate(id, { title, description }, { new: true });
+    return res.status(200).json({
+        success: true,
+        message: "Todo updated successfully",
+        data: updatedTodo
+    });
+}
 
 
-module.exports = { createTodo, getTodos };
+module.exports = { createTodo, getTodos, updateTodo };
