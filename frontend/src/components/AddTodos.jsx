@@ -11,7 +11,7 @@ const AddTodos = () => {
   const onSubmit = (data) => console.log(data)
   
   return (
-    <div className="flex justify-center items-center min-h-[50vh] bg-gray-100 dark:bg-gray-900">
+    <div className="flex justify-center items-center min-h-[55vh] bg-gray-100 dark:bg-gray-900">
       <form onSubmit={handleSubmit(onSubmit)} className="bg-white dark:bg-gray-800 shadow-xl rounded-xl p-8 w-full max-w-md space-y-6 ">
         <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">Add a New Todo</h2>
         <div >
