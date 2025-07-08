@@ -17,5 +17,17 @@ const createTodo = async (req, res) => {
     });
 }
 
+const getTodos = async (req, res) => {
+    const userId = req.userInfo.id;
+    const allTodosByLoggedInUser = await Todo.find({ createdBy: userId });
+    console.log(allTodosByLoggedInUser);
+    return res.status(200).json({
+        success: true,
+        message: "Todos fetched successfully",
+        data: allTodosByLoggedInUser
+    });
+}
 
-module.exports = { createTodo };
+
+
+module.exports = { createTodo, getTodos };
