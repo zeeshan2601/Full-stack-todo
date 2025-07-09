@@ -1,8 +1,24 @@
 import React from 'react'
+import useTodoStore from '../store/todoStore'
 
-const Todo = ({props}) => {
+const Todo = () => {
+
+  const todos = useTodoStore((state) => state.todos);
+
+  console.log(todos.data);
   return (
-    <div className="flex justify-center my-2">
+    <div >
+      {
+        console.log(todos.data)
+      }
+    </div>
+  )
+}
+
+export default Todo 
+
+/*
+<div className="flex justify-center my-2">
       <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 w-full max-w-md flex flex-col gap-4 border border-gray-200 dark:border-gray-700">
         <h1 className="text-xl font-bold text-gray-800 dark:text-white">{props.title}</h1>
         <p className="text-gray-600 dark:text-gray-300 mb-2">{props.description}</p>
@@ -12,7 +28,4 @@ const Todo = ({props}) => {
         </div>
       </div>
     </div>
-  )
-}
-
-export default Todo 
+*/

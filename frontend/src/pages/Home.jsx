@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import AddTodos from "../components/AddTodos";
-import Todo from "../components/todo";
-import axios from "axios";
+import Todo from "../components/Todo";
+
+import useTodoStore from "../store/todoStore";
+import { getTodos } from "../services/todoService";
 
 const Home = () => {
-  const fakeData = {
-    title: "Todo 1",
-    description: "Description 1"
-  }
+  const setTodos = useTodoStore((state) => state.setTodos);
+  const todos = useTodoStore((state) => state.todos);
 
-  const onSubmit = (data) => console.log(data)
+  useEffect(() => {
+    getTodos()
+    .then((todos) => {
+      setTodos(todos);
+      //console.log(todos);
+    })
+    .catch((error) => console.log(error));
+  }, []);
+
+  //const onSubmit = (data) => console.log(data)
 
   return(
     <div>
       <div>
         <AddTodos />
       </div>
-      <Todo props={fakeData} />
+      
     </div>
   )
 };

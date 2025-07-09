@@ -30,6 +30,7 @@ const LogIn = () => {
       try {
         const response = await loginWithUsername(emailOrUsername, password);
         console.log(response);
+        console.log("token: ",response.data.token);
         if (response.success) {
           setToken(response.data.token);
           navigate("/home");

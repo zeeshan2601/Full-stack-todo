@@ -1,14 +1,33 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { createTodo } from '../services/todoService'
+import useTodoStore from '../store/todoStore.js'
+import useAuthStore from '../store/authStore.js'
 
 const AddTodos = () => {
+  const setTodos = useTodoStore((state) => state.setTodos);
+  const todos = useTodoStore((state) => state.todos);
+
+  //const token = useAuthStore((state) => state.token);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
   
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = async(data) => {
+    try {
+      const response = await createTodo(data);
+      console.log(response);
+      if(response.success){
+        setTodos([...todos, response.todo]);
+        console.log('Todo created successfully');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   return (
     <div className="flex justify-center items-center min-h-[55vh] bg-gray-100 dark:bg-gray-900">
