@@ -14,7 +14,9 @@ const Home = () => {
 
   return(
     <div>
-      <AddTodos />
+      <div>
+        <AddTodos />
+      </div>
       <Todo props={fakeData} />
     </div>
   )
