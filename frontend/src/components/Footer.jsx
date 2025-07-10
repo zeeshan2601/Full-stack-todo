@@ -22,6 +22,10 @@ const Footer = () => {
               <span className="font-semibold">Backend-Developer:</span> Zeeshan
               Ahmed
             </span>
+            <span className="hidden sm:inline mx-2">|</span>
+            <span>
+              <span className="font-semibold">Instagram:</span> zeeshan.unfiltered_26
+            </span>
           </div>
         </div>
       </footer>

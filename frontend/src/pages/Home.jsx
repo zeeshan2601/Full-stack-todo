@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
 import AddTodos from "../components/AddTodos";
 import Todo from "../components/Todo";
 
@@ -12,23 +11,36 @@ const Home = () => {
 
   useEffect(() => {
     getTodos()
-    .then((todos) => {
-      setTodos(todos);
-      //console.log(todos);
-    })
-    .catch((error) => console.log(error));
-  }, []);
+      .then((fetchedTodos) => {
+        // Ensure fetchedTodos is always an array
+        if (Array.isArray(fetchedTodos)) {
+          setTodos(fetchedTodos);
+        } else if (fetchedTodos && typeof fetchedTodos === "object") {
+          setTodos([fetchedTodos]);
+        } else {
+          setTodos([]);
+        }
+        console.log(fetchedTodos);
+      })
+      .catch((error) => {
+        console.log(error);
+        setTodos([]);
+      });
+  }, [setTodos]);
 
-  //const onSubmit = (data) => console.log(data)
-
-  return(
-    <div>
-      <div>
-        <AddTodos />
+  return (
+    <div className="flex flex-col md:flex-row  justify-center items-start gap-5 w-full max-w-6xl mx-auto py-8">
+      <div className="w-full flex justify-center md:sticky top-52 ">
+        {/* Increase the size of AddTodos by adjusting max-w and scaling up */}
+        <div className="w-full max-w-lg">
+          <AddTodos />
+        </div>
       </div>
-      
+      <div className="w-full md:w-2/3 flex justify-center">
+        <Todo />
+      </div>
     </div>
-  )
+  );
 };
 
 export default Home;

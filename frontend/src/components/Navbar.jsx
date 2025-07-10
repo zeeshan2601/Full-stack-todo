@@ -7,11 +7,13 @@ const Navbar = () => {
   const navigate = useNavigate();
   const clearToken = useAuthStore((state) => state.clearToken);
   const token = useAuthStore((state) => state.token);
+
   function handleLogout() {
     clearToken();
-    //console.log('token', token);
+    console.log("token", token);
     navigate("/login");
   }
+  
   return (
     <div>
       <nav className="flex justify-between bg-gray-800 text-white p-4">
