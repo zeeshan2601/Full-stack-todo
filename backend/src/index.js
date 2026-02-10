@@ -18,6 +18,13 @@ app.use(bodyParser.json());
 const authRoutes = require('./routes/auth.routes.js');
 const homeRoutes = require('./routes/home.routes.js');
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "Hello World",
+    status: "success"
+  });
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/home', homeRoutes);
